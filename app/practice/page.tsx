@@ -33,11 +33,11 @@ const TOTAL = 3600;
 
 export default function PracticePage() {
   const [timeLeft, setTimeLeft] = useState(TOTAL);
-  const [answers, setAnswers] = useState<Record<number, any>>({});
+  const [answers, setAnswers] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState(false);
-  const [score, setScore] = useState(null);
+  const [score, setScore] = useState<number>(0);
   const [showResults, setShowResults] = useState(false);
-
+  
   useEffect(() => {
     if (submitted) return;
     const id = setInterval(() => setTimeLeft(t => t > 0 ? t - 1 : 0), 1000);
@@ -56,7 +56,9 @@ export default function PracticePage() {
     setScore(c); setSubmitted(true); setShowResults(true);
   }, [answers, submitted]);
 
-  const pick = (id, val) => { if (!submitted) setAnswers(p => ({ ...p, [id]: val })); };
+  const pick = (id: number, val: string) => { 
+  if (!submitted) setAnswers(p => ({ ...p, [id]: val })); 
+};
 
   return (
     <>
