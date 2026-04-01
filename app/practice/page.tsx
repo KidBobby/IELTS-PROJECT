@@ -33,7 +33,7 @@ const TOTAL = 3600;
 
 export default function PracticePage() {
   const [timeLeft, setTimeLeft] = useState(TOTAL);
-  const [answers, setAnswers] = useState({});
+  const [answers, setAnswers] = useState<Record<number, any>>({});
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(null);
   const [showResults, setShowResults] = useState(false);
